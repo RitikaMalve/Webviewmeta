@@ -1,4 +1,4 @@
-package com.dev.meta4club
+package com.dev.GuruSamruddhi
 
 import io.flutter.embedding.android.FlutterActivity
 

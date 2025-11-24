@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
-      title: 'Meta4club',
+      title: 'Guru Samruddhi',
      
       home: SplashScreen(),
     );
@@ -44,7 +44,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset("asset/metamainlogo.png"),  // Replace with your splash screen image
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+          child: Image.asset("asset/GuruSamruddhi_logo.png"),
+        ),  // Replace with your splash screen image
       ),
     );
   }
@@ -99,7 +102,7 @@ class _MyWebsiteState extends State<MyWebsite> {
             children: [
               InAppWebView(
                 initialUrlRequest: URLRequest(
-                  url: WebUri("https://meta4club.games/"),
+                  url: WebUri("https://app.gssocietysoft.com/"),
                 ),
                 onWebViewCreated: (controller) {
                   _webViewController = controller;
@@ -124,12 +127,12 @@ class _MyWebsiteState extends State<MyWebsite> {
                   return NavigationActionPolicy.ALLOW;
                 },
               ),
-              _progress < 1
-                  ? LinearProgressIndicator(
-                      value: _progress,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                    )
-                  : SizedBox()
+             if (_progress < 1) 
+      Container(
+        color: Colors.white,      // optional: background behind loader
+        child: logoLoader(),
+      ),
+                  // : SizedBox()
             ],
           ),
         ),
@@ -153,4 +156,21 @@ class _MyWebsiteState extends State<MyWebsite> {
       throw 'Could not launch UPI app';
     }
   }
+}
+Widget logoLoader() {
+  return Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Logo
+        SizedBox(
+          height: 80,
+          width: 80,
+          child: Image.asset("asset/GuruSamruddhi_logo.png"), // your logo
+        ),
+
+        const SizedBox(height: 20),
+      ],
+    ),
+  );
 }
